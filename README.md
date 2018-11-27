@@ -1,3 +1,11 @@
+jQuery.BgSwitcher -- 勉強用リポジトリ
+=========================
+
+このスクリプトを勉強するためのリポジトリです。
+
+以下が、オリジナルのREADME
+-------------------------
+
 jQuery.BgSwitcher [![Build Status](https://travis-ci.org/rewish/jquery-bgswitcher.png?branch=master)](https://travis-ci.org/rewish/jquery-bgswitcher)
 =========================
 
