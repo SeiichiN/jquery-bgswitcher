@@ -147,6 +147,7 @@
 
         /**
          * Set switch handler
+		 *   this（インスタンス）に対して、引数である関数を適用する
          *
          * @param {Function} fn
          *     f ($el) {
@@ -154,12 +155,31 @@
          *     }
          */
         setSwitchHandler: function(fn) {
-            console.log(fn)
+            //
+			// proxy -- オブジェクトのアクションをインターセプトしたり変更したりする（『初めてのJavaScript第3版』オライリージャパンP365）
+			// @param1 -- ターゲット（プロキシされるオブジェクト）
+			// @param2 -- ハンドラ（インターセプトされるアクション）
+			//
+			// しかし、上記の本の内容と、この場合とでは違うような気がする
+			// 
+			// http://js.studio-kingdom.com/jquery/utilities/proxy だと、
+			// $.proxy(function, context) とあって、
+			//   function -- コンテキストを変更したい関数
+			//   context  -- 関数をセットするコンテキスト(this)のオブジェクト
+			// とあるので、こっちが正解やな。
+			//
+			// つまり、この場合、this に fn を適用してるということか。
+            // ここの解説がわかりやすい。
+            //   http://h2ham.seesaa.net/article/142734325.html
+            //
             this.switchHandler = $.proxy(fn, this);
         },
 
         /**
          * Default switch handler
+         *   refreshメソッドのなかで呼ばれるだけ.
+         *   しかも、そこでは引数はない。
+         *   要するに、typeをセットするか、effectをセットするかかな。
          *
          * @param {string} type
          * @returns {Function}
@@ -170,8 +190,11 @@
 
         /**
          * Refresh
+         *   configをthisにセットしたときに呼ばれるメソッド
          */
         refresh: function() {
+            console.log(this.config);
+            
             this.setImages(this.config.images);
             this.setSwitchHandler(this.getBuiltInSwitchHandler());
             this._prepareSwitching();
@@ -413,11 +436,14 @@
 
         /**
          * Prepare the Switching
+         *
+         * this.index -- 0, 1, 2, 3, 4
          */
         _prepareSwitching: function() {
             this.$bg.css('backgroundImage', this.imageList.url(this.index));
+            console.log(this.imageList.url(this.index));
         }
-    });
+    }); // BgSwitcher.prototype
 
     /**
      * Data Keys
