@@ -534,11 +534,14 @@
      * @param {Function} fn
      */
     BgSwitcher.defineEffect = function(name, fn) {
+        console.log(name);
         this.switchHandlers[name] = fn;
     };
 
     /**
      * BgSwitcher.ImageList
+     *
+     * これが、画像をセットしている本体部分
      *
      * @param {Array} images
      * @constructor
@@ -589,6 +592,8 @@
 
         /**
          * Preload an images
+         * まず、<img>要素を作成。それを loadedImage[path] に格納
+         * loadedImages[path].src に path をセット。... ?
          */
         preload: function() {
             var path,
@@ -596,8 +601,10 @@
                 i = 0;
 
             for (; i < length; i++) {
+                // this.images[i] -- 'images/image_1.jpg' ...
                 path = this.images[i];
                 if (!loadedImages[path]) {
+                    // Image() -- <img src="">要素を作成する
                     loadedImages[path] = new Image();
                     // loadedImages[path] -- <img src="images/image_1.jpg">
                     // loadedImages[path].src -- file://からの image_1.jpgのフルパス
@@ -634,7 +641,7 @@
          * Get the image from index
          *
          * @param {number} index -- 0, 1, 2, 3, 4
-         * @returns {string}
+         * @returns {string} -- 'images/image_1.jpg'
          */
         get: function(index) {
             // images[index] -- 'images/image_1.jpg' ...

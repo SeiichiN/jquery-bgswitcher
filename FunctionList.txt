@@ -1,0 +1,62 @@
+
+BgSwithcer.ImageListプロトタイプ
+
+  isSequenceable -- this.imagesのチェック
+  createImagesBySequence -- this.images に１〜５の画像をセット
+  preload -- 画像をプリロード？
+             <img>要素を作っている。
+  shuffle -- 画像の順番をシャッフル？
+  get -- index番号(0, 1... )から、'images/image_1.jpg'の文字列を作成する
+         引数：number 戻り値：string
+         this.imageメソッドを使用
+  url -- index番号から 'images/image_1.jpg'の文字列を得る
+         引数：number 戻り値：string
+         this.getメソッドを使用
+  count -- this.imagesの要素数を返す
+           引数：なし 戻り値：number
+
+
+
+BgSwitcher.defineEffect -- 効果名にその動きをセットしてるっぽい。
+
+BgSwitcher.ImageList -- 各画像を this.images にセットし、プリロードもしている。
+
+BgSwitcher.switchHandlers -- 効果の各動きを定義
+
+BgSwitcher.defaultconfig -- 効果の初期設定
+
+BgSwitcher.keys -- bgSwitcher というキーをセット
+
+
+BgSwitcherプロトタイプ
+
+  dispatch -- 引数の型を調べて、Object の場合と String の場合とで処理を分けている。
+              Objectの場合 -- setConfigメソッドの適用
+              Stringの場合 -- 配列に変えて、先頭要素を取り除いている
+
+  setConfig -- this.config に config の内容をセットしている。
+              それから、this.refresh() に処理を渡している。
+
+  setImages -- this.imageList インスタンスを生成。
+              refresh()メソッドから呼ばれる。
+              引数は、配列images -- ["images/image_.jpg", 1, 5]
+              this.constructor.ImageListがその関数。
+              生成されたthis.imageListは、以下のオブジェクトである。
+                images: ["images/image_1.jpg", "images/image_2.jpg",
+                         "images/image_3.jpg", "images/image_4.jpg",
+                         "images/image_5.jpg"]
+
+  setSwitchHander -- this に対して、fn（関数） を適用する。
+                     実態は、$.proxyを適用しているだけ。
+
+  getBuiltInSwitchHandler -- 引数は type。
+              これも、this.constructor.switchHandlers に type か、もしくは this.config.effect を適用しているだけ。
+
+  refresh -- setConfig から呼ばれるメソッド。
+             config の中の image を this.setImagesを呼んで this.imageList を作成。
+             getBuildInSwitchHander()から返ってきた effect を this.setSwitchHandler() を呼んで、this.switchHandler　にセット。
+             this._prepareSwitching() を呼んで、CSS の 'backgroundImage' に this.imageList の image_1.jpg 〜 image_5.jpg までをセットしている。
+
+
+
+                
