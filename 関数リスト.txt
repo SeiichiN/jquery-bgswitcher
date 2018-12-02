@@ -1,0 +1,17 @@
+
+BgSwithcer.ImageListプロトタイプ
+
+  isSequenceable -- this.imagesのチェック
+  createImagesBySequence -- this.images に１〜５の画像をセット
+  preload -- 画像をプリロード？
+  shuffle -- 画像の順番をシャッフル？
+  get -- index番号(0, 1... )から、'images/image_1.jpg'の文字列を作成する
+         引数：number 戻り値：string
+         this.imageメソッドを使用
+  url -- index番号から 'images/image_1.jpg'の文字列を得る
+         引数：number 戻り値：string
+         this.getメソッドを使用
+  count -- this.imagesの要素数を返す
+           引数：なし 戻り値：number
+
+

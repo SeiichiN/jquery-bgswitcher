@@ -1,0 +1,100 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+$.fn.bgswitcher	jquery.bgswitcher.js	/^    $.fn.bgswitcher = function() {$/;"	kind:function	line:21	language:JavaScript
+$.fn.bgswitcher	jquery.bgswitcher_org.js	/^  $.fn.bgswitcher = function() {$/;"	kind:function	line:21	language:JavaScript
+Animation	lib/jquery.js	/^function Animation( elem, properties, options ) {$/;"	kind:function	line:8892	language:JavaScript
+BgSwitcher	jquery.bgswitcher.js	/^    function BgSwitcher(el) {$/;"	kind:class	line:64	language:JavaScript
+BgSwitcher	jquery.bgswitcher_org.js	/^  function BgSwitcher(el) {$/;"	kind:class	line:48	language:JavaScript
+BgSwitcher.ImageList	jquery.bgswitcher.js	/^    BgSwitcher.ImageList = function(images) {$/;"	kind:class	line:536	language:JavaScript
+BgSwitcher.ImageList	jquery.bgswitcher_org.js	/^  BgSwitcher.ImageList = function(images) {$/;"	kind:class	line:441	language:JavaScript
+BgSwitcher.defaultConfig.images	jquery.bgswitcher.js	/^        images: [],$/;"	kind:property	line:481	language:JavaScript
+BgSwitcher.defaultConfig.images	jquery.bgswitcher_org.js	/^    images: [],$/;"	kind:property	line:386	language:JavaScript
+BgSwitcher.defineEffect	jquery.bgswitcher.js	/^    BgSwitcher.defineEffect = function(name, fn) {$/;"	kind:class	line:526	language:JavaScript
+BgSwitcher.defineEffect	jquery.bgswitcher_org.js	/^  BgSwitcher.defineEffect = function(name, fn) {$/;"	kind:class	line:431	language:JavaScript
+BgSwitcher.keys.instance	jquery.bgswitcher.js	/^        instance: 'bgSwitcher'$/;"	kind:property	line:473	language:JavaScript
+BgSwitcher.keys.instance	jquery.bgswitcher_org.js	/^    instance: 'bgSwitcher'$/;"	kind:property	line:378	language:JavaScript
+BgSwitcher.switchHandlers.blind	jquery.bgswitcher.js	/^        blind: function($el) {$/;"	kind:method	line:499	language:JavaScript
+BgSwitcher.switchHandlers.blind	jquery.bgswitcher_org.js	/^    blind: function($el) {$/;"	kind:method	line:404	language:JavaScript
+BgSwitcher.switchHandlers.clip	jquery.bgswitcher.js	/^        clip: function($el) {$/;"	kind:method	line:503	language:JavaScript
+BgSwitcher.switchHandlers.clip	jquery.bgswitcher_org.js	/^    clip: function($el) {$/;"	kind:method	line:408	language:JavaScript
+BgSwitcher.switchHandlers.drop	jquery.bgswitcher.js	/^        drop: function($el) {$/;"	kind:method	line:514	language:JavaScript
+BgSwitcher.switchHandlers.drop	jquery.bgswitcher_org.js	/^    drop: function($el) {$/;"	kind:method	line:419	language:JavaScript
+BgSwitcher.switchHandlers.fade	jquery.bgswitcher.js	/^        fade: function($el) {$/;"	kind:method	line:496	language:JavaScript
+BgSwitcher.switchHandlers.fade	jquery.bgswitcher_org.js	/^    fade: function($el) {$/;"	kind:method	line:401	language:JavaScript
+BgSwitcher.switchHandlers.hide	jquery.bgswitcher.js	/^        hide: function($el) {$/;"	kind:method	line:521	language:JavaScript
+BgSwitcher.switchHandlers.hide	jquery.bgswitcher_org.js	/^    hide: function($el) {$/;"	kind:method	line:426	language:JavaScript
+BgSwitcher.switchHandlers.slide	jquery.bgswitcher.js	/^        slide: function($el) {$/;"	kind:method	line:510	language:JavaScript
+BgSwitcher.switchHandlers.slide	jquery.bgswitcher_org.js	/^    slide: function($el) {$/;"	kind:method	line:415	language:JavaScript
+Tween	lib/jquery.js	/^Tween.prototype = {$/;"	kind:class	line:9191	language:JavaScript
+Tween	lib/jquery.js	/^function Tween( elem, options, prop, end, easing ) {$/;"	kind:function	line:9188	language:JavaScript
+Tween.constructor	lib/jquery.js	/^	constructor: Tween,$/;"	kind:property	line:9193	language:JavaScript
+Tween.cur	lib/jquery.js	/^	cur: function() {$/;"	kind:method	line:9203	language:JavaScript
+Tween.init	lib/jquery.js	/^	init: function( elem, options, prop, end, easing, unit ) {$/;"	kind:method	line:9194	language:JavaScript
+Tween.init	lib/jquery.js	/^Tween.prototype.init.prototype = Tween.prototype;$/;"	kind:method	line:9237	language:JavaScript
+Tween.propHooks._default	lib/jquery.js	/^	_default: {$/;"	kind:property	line:9239	language:JavaScript
+Tween.run	lib/jquery.js	/^	run: function( percent ) {$/;"	kind:method	line:9210	language:JavaScript
+actualDisplay	lib/jquery.js	/^function actualDisplay( name, doc ) {$/;"	kind:function	line:7298	language:JavaScript
+addToPrefiltersOrTransports	lib/jquery.js	/^function addToPrefiltersOrTransports( structure ) {$/;"	kind:function	line:7642	language:JavaScript
+ajaxConvert	lib/jquery.js	/^function ajaxConvert( s, response, jqXHR, isSuccess ) {$/;"	kind:function	line:8351	language:JavaScript
+ajaxExtend	lib/jquery.js	/^function ajaxExtend( target, src ) {$/;"	kind:function	line:7701	language:JavaScript
+ajaxHandleResponses	lib/jquery.js	/^function ajaxHandleResponses( s, jqXHR, responses ) {$/;"	kind:function	line:8296	language:JavaScript
+applyToDemo	demo/index.html	/^	function applyToDemo() {$/;"	kind:function	line:138	language:HTML
+augmentWidthOrHeight	lib/jquery.js	/^function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {$/;"	kind:function	line:7183	language:JavaScript
+buildParams	lib/jquery.js	/^function buildParams( prefix, obj, traditional, add ) {$/;"	kind:function	line:7527	language:JavaScript
+createActiveXHR	lib/jquery.js	/^function createActiveXHR() {$/;"	kind:function	line:8625	language:JavaScript
+createFxNow	lib/jquery.js	/^function createFxNow() {$/;"	kind:function	line:8871	language:JavaScript
+createStandardXHR	lib/jquery.js	/^function createStandardXHR() {$/;"	kind:function	line:8619	language:JavaScript
+createTween	lib/jquery.js	/^function createTween( value, prop, animation ) {$/;"	kind:function	line:8878	language:JavaScript
+css_defaultDisplay	lib/jquery.js	/^function css_defaultDisplay( nodeName ) {$/;"	kind:function	line:7266	language:JavaScript
+curCSS	lib/jquery.js	/^	curCSS = function( elem, name, _computed ) {$/;"	kind:function	line:7086	language:JavaScript
+dataType	lib/jquery.js	/^		var dataType,$/;"	kind:variable	line:7652	language:JavaScript
+defaultPrefilter	lib/jquery.js	/^function defaultPrefilter( elem, props, opts ) {$/;"	kind:function	line:9063	language:JavaScript
+display	lib/jquery.js	/^	cssShow = { position: "absolute", visibility: "hidden", display: "block" },$/;"	kind:property	line:6807	language:JavaScript
+fontWeight	lib/jquery.js	/^		fontWeight: 400$/;"	kind:property	line:6809	language:JavaScript
+genFx	lib/jquery.js	/^function genFx( type, includeWidth ) {$/;"	kind:function	line:9412	language:JavaScript
+genFx.which.height	lib/jquery.js	/^		attrs = { height: type },$/;"	kind:property	line:9414	language:JavaScript
+getStyles	lib/jquery.js	/^	getStyles = function( elem ) {$/;"	kind:function	line:7083	language:JavaScript
+getWidthOrHeight	lib/jquery.js	/^function getWidthOrHeight( elem, name, extra ) {$/;"	kind:function	line:7222	language:JavaScript
+getWindow	lib/jquery.js	/^function getWindow( elem ) {$/;"	kind:function	line:9708	language:JavaScript
+hooks.empty.fire	lib/jquery.js	/^			hooks.empty.fire = function() {$/;"	kind:function	line:9077	language:JavaScript
+inspectPrefiltersOrTransports	lib/jquery.js	/^function inspectPrefiltersOrTransports( structure, options, originalOptions, jqXHR ) {$/;"	kind:function	line:7674	language:JavaScript
+inspectPrefiltersOrTransports.inspect	lib/jquery.js	/^	function inspect( dataType ) {$/;"	kind:function	line:7679	language:JavaScript
+isHidden	lib/jquery.js	/^function isHidden( elem, el ) {$/;"	kind:function	line:6839	language:JavaScript
+jQuery.cssHooks.opacity.get	lib/jquery.js	/^		get: function( elem, computed ) {$/;"	kind:method	line:7335	language:JavaScript
+jQuery.cssHooks.opacity.set	lib/jquery.js	/^		set: function( elem, value ) {$/;"	kind:method	line:7341	language:JavaScript
+jQuery.easing.linear	lib/jquery.js	/^	linear: function( p ) {$/;"	kind:method	line:9478	language:JavaScript
+jQuery.easing.swing	lib/jquery.js	/^	swing: function( p ) {$/;"	kind:method	line:9481	language:JavaScript
+jQuery.expr.filters.animated	lib/jquery.js	/^	jQuery.expr.filters.animated = function( elem ) {$/;"	kind:function	line:9539	language:JavaScript
+jQuery.expr.filters.hidden	lib/jquery.js	/^	jQuery.expr.filters.hidden = function( elem ) {$/;"	kind:function	line:7415	language:JavaScript
+jQuery.expr.filters.visible	lib/jquery.js	/^	jQuery.expr.filters.visible = function( elem ) {$/;"	kind:function	line:7421	language:JavaScript
+jQuery.fn.load	lib/jquery.js	/^jQuery.fn.load = function( url, params, callback ) {$/;"	kind:function	line:7715	language:JavaScript
+jQuery.fn.offset	lib/jquery.js	/^jQuery.fn.offset = function( options ) {$/;"	kind:function	line:9545	language:JavaScript
+jQuery.fn.offset.docElem.left	lib/jquery.js	/^		box = { top: 0, left: 0 },$/;"	kind:property	line:9556	language:JavaScript
+jQuery.fn.offset.docElem.top	lib/jquery.js	/^		box = { top: 0, left: 0 },$/;"	kind:property	line:9556	language:JavaScript
+jQuery.fn.size	lib/jquery.js	/^jQuery.fn.size = function() {$/;"	kind:function	line:9755	language:JavaScript
+jQuery.fx.speeds._default	lib/jquery.js	/^	_default: 400$/;"	kind:property	line:9531	language:JavaScript
+jQuery.fx.speeds.fast	lib/jquery.js	/^	fast: 200,$/;"	kind:property	line:9530	language:JavaScript
+jQuery.fx.speeds.slow	lib/jquery.js	/^	slow: 600,$/;"	kind:property	line:9529	language:JavaScript
+jQuery.fx.start	lib/jquery.js	/^jQuery.fx.start = function() {$/;"	kind:function	line:9516	language:JavaScript
+jQuery.fx.stop	lib/jquery.js	/^jQuery.fx.stop = function() {$/;"	kind:function	line:9522	language:JavaScript
+jQuery.fx.tick	lib/jquery.js	/^jQuery.fx.tick = function() {$/;"	kind:function	line:9488	language:JavaScript
+jQuery.fx.timer	lib/jquery.js	/^jQuery.fx.timer = function( timer ) {$/;"	kind:function	line:9508	language:JavaScript
+jQuery.offset.setOffset	lib/jquery.js	/^	setOffset: function( elem, options, i ) {$/;"	kind:method	line:9583	language:JavaScript
+jQuery.param	lib/jquery.js	/^jQuery.param = function( a, traditional ) {$/;"	kind:function	line:7490	language:JavaScript
+jQuery.speed	lib/jquery.js	/^jQuery.speed = function( speed, easing, fn ) {$/;"	kind:function	line:9444	language:JavaScript
+letterSpacing	lib/jquery.js	/^		letterSpacing: 0,$/;"	kind:property	line:6808	language:JavaScript
+oldCallbacks	lib/jquery.js	/^var oldCallbacks = [],$/;"	kind:variable	line:8527	language:JavaScript
+opt.complete	lib/jquery.js	/^	opt.complete = function() {$/;"	kind:function	line:9463	language:JavaScript
+position	lib/jquery.js	/^	cssShow = { position: "absolute", visibility: "hidden", display: "block" },$/;"	kind:property	line:6807	language:JavaScript
+propFilter	lib/jquery.js	/^function propFilter( props, specialEasing ) {$/;"	kind:function	line:8996	language:JavaScript
+r20	lib/jquery.js	/^var r20 = \/%20\/g,$/;"	kind:variable	line:7455	language:JavaScript
+return	lib/jquery.js	/^	return new Tween.prototype.init( elem, options, prop, end, easing );$/;"	kind:class	line:9188	language:JavaScript
+return.init	lib/jquery.js	/^	return new Tween.prototype.init( elem, options, prop, end, easing );$/;"	kind:method	line:9189	language:JavaScript
+setPositiveNumber	lib/jquery.js	/^function setPositiveNumber( elem, value, subtract ) {$/;"	kind:function	line:7175	language:JavaScript
+showHide	lib/jquery.js	/^function showHide( elements, show ) {$/;"	kind:function	line:6846	language:JavaScript
+vendorPropName	lib/jquery.js	/^function vendorPropName( style, name ) {$/;"	kind:function	line:6817	language:JavaScript
+visibility	lib/jquery.js	/^	cssShow = { position: "absolute", visibility: "hidden", display: "block" },$/;"	kind:property	line:6807	language:JavaScript

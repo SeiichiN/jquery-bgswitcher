@@ -193,8 +193,6 @@
          *   configをthisにセットしたときに呼ばれるメソッド
          */
         refresh: function() {
-            console.log(this.config);
-            
             this.setImages(this.config.images);
             this.setSwitchHandler(this.getBuiltInSwitchHandler());
             this._prepareSwitching();
@@ -209,6 +207,9 @@
          */
         start: function() {
             if (!this._timerID) {
+                // proxy -- this に next という関数を適用している
+                // interval -- 5000
+                // _timerID -- 1, 4, 7, 10, 13....
                 this._timerID = setTimeout($.proxy(this, 'next'), this.config.interval);
             }
         },
@@ -217,6 +218,7 @@
          * Stop switching
          */
         stop: function() {
+            // _timerID -- 1, 4, 7, 10...
             if (this._timerID) {
                 clearTimeout(this._timerID);
                 this._timerID = null;
@@ -248,10 +250,13 @@
         next: function() {
             var max = this.imageList.count();
 
+            // config が loop でない場合
+            // index + 1 が max である場合
             if (!this.config.loop && this.index + 1 === max) {
                 return;
             }
 
+            // index が max の場合は 0 とする
             if (++this.index === max) {
                 this.index = 0;
             }
@@ -293,6 +298,7 @@
          */
         switching: function() {
             var started = !!this._timerID;
+            // console.log(!!this._timerID);
 
             if (started) {
                 this.stop();
@@ -384,8 +390,16 @@
                 this.$switchable.remove();
             }
 
+            // $bg -- init {div, context:div}
+            // $bg.clone() -- init {div, prevObject:init(1), context:div}
+            // clone() -- 要素のクローンを作成し、そのクローンを選択状態にする
             this.$switchable = this.$bg.clone();
+            
             this.$switchable.css({top: 0, left: 0, margin: 0, border: 'none'});
+            
+            // appendTo -- 要素の中身を他の要素に追加する。
+            // $(A).appendTo(B) -- BにAが追加される。
+            // $bg に $switchable を追加する。
             this.$switchable.appendTo(this.$bg);
         },
 
@@ -400,6 +414,15 @@
                 backgroundPosition = 'backgroundPosition';
 
             for (; i < length; i++) {
+                // backgroundProperties[i] --
+                //   Attachment
+                //   Color
+                //   Image
+                //   Repeat
+                //   Position
+                //   Size
+                //   Clip
+                //   Origin
                 prop = 'background' + backgroundProperties[i];
                 copiedStyle[prop] = this.$el.css(prop);
             }
@@ -441,7 +464,7 @@
          */
         _prepareSwitching: function() {
             this.$bg.css('backgroundImage', this.imageList.url(this.index));
-            console.log(this.imageList.url(this.index));
+            // console.log(this.imageList.url(this.index));
         }
     }); // BgSwitcher.prototype
 
@@ -540,6 +563,7 @@
 
         /**
          * Create an images by sequence
+         * ここで、this.images に１〜５の画像をセットしている
          */
         createImagesBySequence: function() {
             if (!this.isSequenceable()) {
@@ -547,14 +571,19 @@
             }
 
             var images = [],
-                base = this.images[0],
-                min = this.images[1],
-                max = this.images[2];
+                base = this.images[0], // 'images/image_.jpg'
+                min = this.images[1],  // 1
+                max = this.images[2];  // 5
 
             do {
+                // base = 'images/image_.jpg'
+                // min = 1, 2, 3, 4, 5
+                // $& -- マッチした文字列全体
                 images.push(base.replace(/\.\w+$/, min + '$&'));
             } while (++min <= max);
 
+            // this.images -- ['images/image_.jpg', 1, 5]
+            // これを ['images/image_1.jpg', ...] にしている
             this.images = images;
         },
 
@@ -570,6 +599,8 @@
                 path = this.images[i];
                 if (!loadedImages[path]) {
                     loadedImages[path] = new Image();
+                    // loadedImages[path] -- <img src="images/image_1.jpg">
+                    // loadedImages[path].src -- file://からの image_1.jpgのフルパス
                     loadedImages[path].src = path;
                 }
             }
@@ -602,20 +633,22 @@
         /**
          * Get the image from index
          *
-         * @param {number} index
+         * @param {number} index -- 0, 1, 2, 3, 4
          * @returns {string}
          */
         get: function(index) {
+            // images[index] -- 'images/image_1.jpg' ...
             return this.images[index];
         },
 
         /**
          * Get the URL with function of CSS
          *
-         * @param {number} index
-         * @returns {string}
+         * @param {number} index -- 0, 1, 2, 3, 4
+         * @returns {string} -- 'url(images/image_1.jpg)'
          */
         url: function(index) {
+            // get(index) -- "images/image_1.jpg" ...
             return 'url(' + this.get(index) + ')';
         },
 

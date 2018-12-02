@@ -1,0 +1,8 @@
+
+BgSwithcer.ImageListプロトタイプ
+
+  isSequenceable -- this.imagesのチェック
+  createImagesBySequence -- this.images に１〜５の画像をセット
+  preload -- 画像をプリロード？
+  shuffle -- 画像の順番をシャッフル？
+  
