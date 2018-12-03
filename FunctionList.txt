@@ -1,35 +1,17 @@
 
-BgSwithcer.ImageListプロトタイプ
+$.fn.bgswitcher -- <div class="box"...>に対して何か処理してるっぽい。
+                   $.data(this, instanceKey);
+                   instance = new BgSwitcher(this);
+                   $.data(this, instanceKey, instance);
+                   instance.dispach.apply(instance, args);
 
-  isSequenceable -- this.imagesのチェック
-  createImagesBySequence -- this.images に１〜５の画像をセット
-  preload -- 画像をプリロード？
-             <img>要素を作っている。
-  shuffle -- 画像の順番をシャッフル？
-  get -- index番号(0, 1... )から、'images/image_1.jpg'の文字列を作成する
-         引数：number 戻り値：string
-         this.imageメソッドを使用
-  url -- index番号から 'images/image_1.jpg'の文字列を得る
-         引数：number 戻り値：string
-         this.getメソッドを使用
-  count -- this.imagesの要素数を返す
-           引数：なし 戻り値：number
+$.fn.bgSwitcher = $.fn.bgswitcher;
 
-
-
-BgSwitcher.defineEffect -- 効果名にその動きをセットしてるっぽい。
-
-BgSwitcher.ImageList -- 各画像を this.images にセットし、プリロードもしている。
-
-BgSwitcher.switchHandlers -- 効果の各動きを定義
-
-BgSwitcher.defaultconfig -- 効果の初期設定
-
-BgSwitcher.keys -- bgSwitcher というキーをセット
+BgSwitcher(el) -- どうも初期設定をしてるっぽい。
 
 
 BgSwitcherプロトタイプ
-
+---------------------------------------------------------------------------
   dispatch -- 引数の型を調べて、Object の場合と String の場合とで処理を分けている。
               Objectの場合 -- setConfigメソッドの適用
               Stringの場合 -- 配列に変えて、先頭要素を取り除いている
@@ -57,6 +39,75 @@ BgSwitcherプロトタイプ
              getBuildInSwitchHander()から返ってきた effect を this.setSwitchHandler() を呼んで、this.switchHandler　にセット。
              this._prepareSwitching() を呼んで、CSS の 'backgroundImage' に this.imageList の image_1.jpg 〜 image_5.jpg までをセットしている。
 
+  start -- 5000をintervalにセットしている。
+
+  stop -- 背景のチェンジャーをとめる
+
+  toggle -- タイマーがセットされていたら、ストップ。でなければ、スタート。
+
+  reset -- indexを0にして、_prepareSwitching()しているだけ。
+
+  next -- indexを+1して、switching()している。
+
+  prev -- indexを-1して、switching()している。
+
+  select -- indexの指定を受け付けている。
+
+  switching -- 背景の付替えの元締め的なメソッド
+               _createSwitchableElement();
+               _prepareSwitching();
+               switchHandler(this.$switchable);
+
+  destroy -- 処理の中止。
+
+  _adjustRectangle -- 背景の描画。CSSの設定。
+
+  _setupBackgroundElement -- 背景のセット。
+
+  _createSwitchableElement -- 要素の作成。ちょっとよくわからん。
+
+  _copyBackgroundStyles -- なぜ、コピーが必要？
+
+  _listenToResize -- リサイズ。
+
+  _stopListeningToResize -- リサイズのストップ。
+
+  _prepareSwitching -- 背景に画像をセットしている。
+---------------------------------------------------------------------------
+  
+
+BgSwitcher.keys -- bgSwitcher というキーをセット
+
+BgSwitcher.defaultconfig -- 効果の初期設定
+
+BgSwitcher.switchHandlers -- 効果の各動きを定義
+
+BgSwitcher.defineEffect -- 効果名にその動きをセットしてるっぽい。
+
+BgSwitcher.ImageList -- 各画像を this.images にセットし、プリロードもしている。
 
 
-                
+               
+
+
+
+BgSwithcer.ImageListプロトタイプ
+---------------------------------------------------------------------------
+  isSequenceable -- this.imagesのチェック
+  createImagesBySequence -- this.images に１〜５の画像をセット
+  preload -- 画像をプリロード？
+             <img>要素を作っている。
+  shuffle -- 画像の順番をシャッフル？
+  get -- index番号(0, 1... )から、'images/image_1.jpg'の文字列を作成する
+         引数：number 戻り値：string
+         this.imageメソッドを使用
+  url -- index番号から 'images/image_1.jpg'の文字列を得る
+         引数：number 戻り値：string
+         this.getメソッドを使用
+  count -- this.imagesの要素数を返す
+           引数：なし 戻り値：number
+---------------------------------------------------------------------------
+
+
+
+$.BgSwitcher = BgSwitcher;

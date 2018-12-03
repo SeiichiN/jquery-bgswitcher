@@ -59,10 +59,12 @@
      * BgSwitcher
      *
      * @param {HTMLElement} el
+     *        <div class="box" style="background: none;" ...></div> 
      * @constructor
      */
     function BgSwitcher(el) {
-        this.$el = $(el);
+        console.log(el);
+        this.$el = $(el);  // this.$el -- init[div.box, context: div.box]
         this.index = 0;
         this.config = $.extend({}, BgSwitcher.defaultConfig);
 
