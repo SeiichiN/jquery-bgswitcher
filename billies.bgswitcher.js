@@ -36,7 +36,6 @@
         return this.each(function() {
             // thisから'bgSwitcher'というキー名で保存されたデータを読み込む
             var instance = $.data(this, instanceKey);
-//			var instance;
 
             // もし、instanceがundefinedならば
             if (!instance) {
@@ -75,7 +74,7 @@
         this.config = $.extend({}, BgSwitcher.defaultConfig);
 
         this._setupBackgroundElement();
-        this._listenToResize();
+//        this._listenToResize();
     }
 
     $.extend(BgSwitcher.prototype, {
@@ -236,13 +235,13 @@
         /**
          * Toggle between start/stop
          */
-        toggle: function() {
-            if (this._timerID) {
-                this.stop();
-            } else {
-                this.start();
-            }
-        },
+//        toggle: function() {
+//            if (this._timerID) {
+//                this.stop();
+//            } else {
+//                this.start();
+//            }
+//        },
 
         /**
          * Reset switching
@@ -275,31 +274,31 @@
         /**
          * Go to previous switching
          */
-        prev: function() {
-            if (!this.config.loop && this.index === 0) {
-                return;
-            }
-
-            if (--this.index === -1) {
-                this.index = this.imageList.count() - 1;
-            }
-
-            this.switching();
-        },
+//        prev: function() {
+//            if (!this.config.loop && this.index === 0) {
+//                return;
+//            }
+//
+//            if (--this.index === -1) {
+//                this.index = this.imageList.count() - 1;
+//            }
+//
+//            this.switching();
+//        },
 
         /**
          * Select the switching at index
          *
          * @param {number} index
          */
-        select: function(index) {
-            if (index === -1) {
-                index = this.imageList.count() - 1;
-            }
-
-            this.index = index;
-            this.switching();
-        },
+//        select: function(index) {
+//            if (index === -1) {
+//                index = this.imageList.count() - 1;
+//            }
+//
+//            this.index = index;
+//            this.switching();
+//        },
 
         /**
          * Switching the background image
@@ -324,25 +323,25 @@
         /**
          * Destroy...
          */
-        destroy: function() {
-            this.stop();
-            this._stopListeningToResize();
-
-            if (this.$switchable) {
-                this.$switchable.stop();
-                this.$switchable.remove();
-                this.$switchable = null;
-            }
-
-            if (this.$bg) {
-                this.$bg.remove();
-                this.$bg = null;
-            }
-
-            this.$el.removeAttr('style');
-            this.$el.removeData(this.constructor.keys.instance);
-            this.$el = null;
-        },
+//        destroy: function() {
+//            this.stop();
+//            this._stopListeningToResize();
+//
+//            if (this.$switchable) {
+//                this.$switchable.stop();
+//                this.$switchable.remove();
+//                this.$switchable = null;
+//            }
+//
+//            if (this.$bg) {
+//                this.$bg.remove();
+//                this.$bg = null;
+//            }
+//
+//            this.$el.removeAttr('style');
+//            this.$el.removeData(this.constructor.keys.instance);
+//            this.$el = null;
+//        },
 
         /**
          * Adjust rectangle
@@ -449,21 +448,21 @@
         /**
          * Listen to the resize event
          */
-        _listenToResize: function() {
-            var that = this;
-            this._resizeHandler = function() {
-                that._adjustRectangle();
-            };
-            $(window).on('resize', this._resizeHandler);
-        },
+//        _listenToResize: function() {
+//            var that = this;
+//            this._resizeHandler = function() {
+//                that._adjustRectangle();
+//            };
+//            $(window).on('resize', this._resizeHandler);
+//        },
 
         /**
          * Stop listening to the resize event
          */
-        _stopListeningToResize: function() {
-            $(window).off('resize', this._resizeHandler);
-            this._resizeHandler = null;
-        },
+//        _stopListeningToResize: function() {
+//            $(window).off('resize', this._resizeHandler);
+//            this._resizeHandler = null;
+//        },
 
         /**
          * Prepare the Switching
@@ -507,32 +506,32 @@
         fade: function($el) {
             $el.animate({opacity: 0}, this.config.duration, this.config.easing);
         },
-
-        blind: function($el) {
-            $el.animate({height: 0}, this.config.duration, this.config.easing);
-        },
-
-        clip: function($el) {
-            $el.animate({
-                top: parseInt($el.css('top'), 10) + $el.height() / 2,
-                height: 0
-            }, this.config.duration, this.config.easing);
-        },
-
-        slide: function($el) {
-            $el.animate({top: -$el.height()}, this.config.duration, this.config.easing);
-        },
-
-        drop: function($el) {
-            $el.animate({
-                left: -$el.width(),
-                opacity: 0
-            }, this.config.duration, this.config.easing);
-        },
-
-        hide: function($el) {
-            $el.hide();
-        }
+//
+//        blind: function($el) {
+//            $el.animate({height: 0}, this.config.duration, this.config.easing);
+//        },
+//
+//        clip: function($el) {
+//            $el.animate({
+//                top: parseInt($el.css('top'), 10) + $el.height() / 2,
+//                height: 0
+//            }, this.config.duration, this.config.easing);
+//        },
+//
+//        slide: function($el) {
+//            $el.animate({top: -$el.height()}, this.config.duration, this.config.easing);
+//        },
+//
+//        drop: function($el) {
+//            $el.animate({
+//                left: -$el.width(),
+//                opacity: 0
+//            }, this.config.duration, this.config.easing);
+//        },
+//
+//        hide: function($el) {
+//            $el.hide();
+//        }
     };
 
     /**
