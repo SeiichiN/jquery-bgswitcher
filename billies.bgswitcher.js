@@ -126,9 +126,6 @@
         setConfig: function(config) {
             this.config = $.extend(this.config, config);
 
-            if (typeof this.config.random !== 'undefined') {
-                this.config.shuffle = this.config.random;
-            }
             // このオブジェクト（要素）が読み込み直されるのかな
             this.refresh();
         },
@@ -146,10 +143,6 @@
             //     images: ["images/image_1.jpg", "images/image_2.jpg" ...
             //              "images/image_5.jpg"]}
             this.imageList = new this.constructor.ImageList(images);
-
-            if (this.config.shuffle) {
-                this.imageList.shuffle();
-            }
         },
 
         /**
@@ -233,17 +226,6 @@
         },
 
         /**
-         * Toggle between start/stop
-         */
-//        toggle: function() {
-//            if (this._timerID) {
-//                this.stop();
-//            } else {
-//                this.start();
-//            }
-//        },
-
-        /**
          * Reset switching
          */
         reset: function() {
@@ -271,41 +253,15 @@
             this.switching();
         },
 
-        /**
-         * Go to previous switching
-         */
-//        prev: function() {
-//            if (!this.config.loop && this.index === 0) {
-//                return;
-//            }
-//
-//            if (--this.index === -1) {
-//                this.index = this.imageList.count() - 1;
-//            }
-//
-//            this.switching();
-//        },
-
-        /**
-         * Select the switching at index
-         *
-         * @param {number} index
-         */
-//        select: function(index) {
-//            if (index === -1) {
-//                index = this.imageList.count() - 1;
-//            }
-//
-//            this.index = index;
-//            this.switching();
-//        },
 
         /**
          * Switching the background image
+         * 
+         * _timerIDに値がセットされていれば、startedがtrueとなり、stop()する。
+         *  続いて、３つの処理をして、再度start()する。
          */
         switching: function() {
-            var started = !!this._timerID;
-            // console.log(!!this._timerID);
+            var started = !!this._timerID;  // _timerIDに値がセットされていれば true
 
             if (started) {
                 this.stop();
@@ -320,28 +276,6 @@
             }
         },
 
-        /**
-         * Destroy...
-         */
-//        destroy: function() {
-//            this.stop();
-//            this._stopListeningToResize();
-//
-//            if (this.$switchable) {
-//                this.$switchable.stop();
-//                this.$switchable.remove();
-//                this.$switchable = null;
-//            }
-//
-//            if (this.$bg) {
-//                this.$bg.remove();
-//                this.$bg = null;
-//            }
-//
-//            this.$el.removeAttr('style');
-//            this.$el.removeData(this.constructor.keys.instance);
-//            this.$el = null;
-//        },
 
         /**
          * Adjust rectangle
@@ -391,6 +325,14 @@
 
         /**
          * Create switchable element
+         *
+         * <div></div>   <== 背景をセットした要素($bg)
+         *      |
+         *      V
+         * <div>          <== $bg
+         *   <div></div>  <== $swichable を追加(appendTo())
+         * </div>
+         * 
          */
         _createSwitchableElement: function() {
             if (this.$switchable) {
@@ -402,11 +344,22 @@
             // clone() -- 要素のクローンを作成し、そのクローンを選択状態にする
             this.$switchable = this.$bg.clone();
             
-            this.$switchable.css({top: 0, left: 0, margin: 0, border: 'none'});
+            // this.$switchable.css({top: 0, left: 0, margin: 0, border: 'none'});
+            this.$switchable.css({top: 0, left: 0});
             
             // appendTo -- 要素の中身を他の要素に追加する。
             // $(A).appendTo(B) -- BにAが追加される。
             // $bg に $switchable を追加する。
+            // （例）
+            //   $('<li>追加</li>').appendTo('ul');
+            //       <ul>
+            //         <li>元からある</li>
+            //         <li>追加</li>           <== 追加される
+            //       </ul>
+            //   https://qiita.com/nekoneko-wanwan/items/227ccad5f8cc449e91e9
+            //
+            // この処理があるおかげで、背景画像の切替がスムーズになる。
+            //
             this.$switchable.appendTo(this.$bg);
         },
 
@@ -446,32 +399,12 @@
         },
 
         /**
-         * Listen to the resize event
-         */
-//        _listenToResize: function() {
-//            var that = this;
-//            this._resizeHandler = function() {
-//                that._adjustRectangle();
-//            };
-//            $(window).on('resize', this._resizeHandler);
-//        },
-
-        /**
-         * Stop listening to the resize event
-         */
-//        _stopListeningToResize: function() {
-//            $(window).off('resize', this._resizeHandler);
-//            this._resizeHandler = null;
-//        },
-
-        /**
          * Prepare the Switching
          *
          * this.index -- 0, 1, 2, 3, 4
          */
         _prepareSwitching: function() {
             this.$bg.css('backgroundImage', this.imageList.url(this.index));
-            // console.log(this.imageList.url(this.index));
         }
     }); // BgSwitcher.prototype
 
@@ -492,7 +425,7 @@
         interval: 5000,
         start: true,
         loop: true,
-        shuffle: false,
+//        shuffle: false,
         effect: 'fade',
         duration: 1000,
         easing: 'swing'
@@ -506,32 +439,6 @@
         fade: function($el) {
             $el.animate({opacity: 0}, this.config.duration, this.config.easing);
         },
-//
-//        blind: function($el) {
-//            $el.animate({height: 0}, this.config.duration, this.config.easing);
-//        },
-//
-//        clip: function($el) {
-//            $el.animate({
-//                top: parseInt($el.css('top'), 10) + $el.height() / 2,
-//                height: 0
-//            }, this.config.duration, this.config.easing);
-//        },
-//
-//        slide: function($el) {
-//            $el.animate({top: -$el.height()}, this.config.duration, this.config.easing);
-//        },
-//
-//        drop: function($el) {
-//            $el.animate({
-//                left: -$el.width(),
-//                opacity: 0
-//            }, this.config.duration, this.config.easing);
-//        },
-//
-//        hide: function($el) {
-//            $el.hide();
-//        }
     };
 
     /**
@@ -556,7 +463,7 @@
     BgSwitcher.ImageList = function(images) {
         this.images = images;
         this.createImagesBySequence();
-        this.preload();
+//        this.preload();
     };
 
     $.extend(BgSwitcher.ImageList.prototype, {
@@ -602,47 +509,25 @@
          * まず、<img>要素を作成。それを loadedImage[path] に格納
          * loadedImages[path].src に path をセット。... ?
          */
-        preload: function() {
-            var path,
-                length = this.images.length,
-                i = 0;
 
-            for (; i < length; i++) {
-                // this.images[i] -- 'images/image_1.jpg' ...
-                path = this.images[i];
-                if (!loadedImages[path]) {
-                    // Image() -- <img src="">要素を作成する
-                    loadedImages[path] = new Image();
-                    // loadedImages[path] -- <img src="images/image_1.jpg">
-                    // loadedImages[path].src -- file://からの image_1.jpgのフルパス
-                    loadedImages[path].src = path;
-                }
-            }
-        },
+        /* preload: function() {
+         *     var path,
+         *         length = this.images.length,
+         *         i = 0;
 
-        /**
-         * Shuffle an images
-         */
-        shuffle: function() {
-            var j, t,
-                i = this.images.length,
-                original = this.images.join();
+         *     for (; i < length; i++) {
+         *         // this.images[i] -- 'images/image_1.jpg' ...
+         *         path = this.images[i];
+         *         if (!loadedImages[path]) {
+         *             // Image() -- <img src="">要素を作成する
+         *             loadedImages[path] = new Image();
+         *             // loadedImages[path] -- <img src="images/image_1.jpg">
+         *             // loadedImages[path].src -- file://からの image_1.jpgのフルパス
+         *             loadedImages[path].src = path;
+         *         }
+         *     }
+         * },*/
 
-            if (!i) {
-                return;
-            }
-
-            while (i) {
-                j = Math.floor(Math.random() * i);
-                t = this.images[--i];
-                this.images[i] = this.images[j];
-                this.images[j] = t;
-            }
-
-            if (this.images.join() === original) {
-                this.shuffle();
-            }
-        },
 
         /**
          * Get the image from index
